@@ -28,9 +28,17 @@ The server uses environment variables for ServiceNow credentials and instance co
 SN_INSTANCE=your_instance_name_without_domain_prefix
 SN_USERNAME=your_user
 SN_PASSWORD=your_password_or_token
+SN_AUTH_MODE=basic
+SN_SCOPE_PREFIX=x_123456
 ```
 
-`SN_INSTANCE` should be the short instance name (for example `dev12345`) — the server builds the base URL as `https://{SN_INSTANCE}.service-now.com`.
+`SN_INSTANCE` may be either the short instance name (for example `dev12345`) or the full instance URL (`https://dev12345.service-now.com`). The server normalizes both forms.
+
+When creating a scoped application, `SN_SCOPE_PREFIX` is prepended to the requested scope name (for example, `x_123456` plus `order_management` becomes `x_123456_order_management`). If `SN_SCOPE_PREFIX` is not set, the server reads the value from the `glide.appcreator.company.code` property in the `sys_properties` table.
+
+If a tool call returns `401 Unauthorized`, verify that `SN_USERNAME` and `SN_PASSWORD` are valid ServiceNow credentials and that the account can use the Table API. The MCP client must also load the same `.env` file shown below; a shell environment and a VS Code MCP process can have different environment variables.
+
+OAuth 2.0 is also supported by setting `SN_AUTH_MODE=oauth`. You can provide a pre-issued `SN_OAUTH_ACCESS_TOKEN`, or configure `SN_OAUTH_CLIENT_ID` and `SN_OAUTH_CLIENT_SECRET` to acquire a token from ServiceNow's `/oauth_token.do` endpoint. Set `SN_OAUTH_GRANT_TYPE=client_credentials` for client credentials flow; this does not require `SN_USERNAME` or `SN_PASSWORD`. The existing `password` and `refresh_token` grants remain supported. Set `SN_OAUTH_SCOPE=useraccount` (or another scope granted to the OAuth application) to include an OAuth scope in the token request. `SN_OAUTH_TOKEN_URL` is only needed for a non-default token endpoint.
 
 ## Quick Start
 
@@ -116,6 +124,8 @@ Below are example MCP tool names and brief descriptions — these map to functio
 - `get_records(table_name, query, limit)` — Query records with an encoded query string.
 - `update_record(table_name, sys_id, fields)` — Update a record by `sys_id`.
 - `delete_record(table_name, sys_id)` — Delete a record by `sys_id`.
+- `create_table(label, name, extends_table)` — Create a custom table in `sys_db_object`.
+- `create_column(table_name, element, column_label, internal_type)` — Create a column in `sys_dictionary`.
 - `create_update_set(name, description)` — Create an update set in the current application scope.
 - `switch_update_set(update_set_sys_id)` — Switch the active update set for subsequent metadata operations.
 - `create_script_include(name, script, api_name, client_callable)` — Create a server-side Script Include.
@@ -135,7 +145,13 @@ Example: using an MCP client call to create a record might look like calling the
 
 ## Testing
 
-- There are no automated tests included by default. For manual testing, run the server and exercise tools with an MCP client or write simple scripts that call the ServiceNow REST API directly using the same credentials.
+Run the authentication and request-wrapper unit tests with:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+These tests mock ServiceNow responses, so they do not require live credentials or network access. For live connectivity testing, run the server and exercise tools with an MCP client using the configured credentials.
 
 ## Contributing
 
