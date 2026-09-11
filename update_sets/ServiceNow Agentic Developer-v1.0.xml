@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2026-09-11 01:14:48">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</application>
+<application_name>ServiceNow Agentic Developer</application_name>
+<application_scope>x_275150_agentic</application_scope>
+<application_version>1.0.0</application_version>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description> </description>
+<inserted/>
+<name>ServiceNow Agentic Developer</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>a40a4bb4c31703105eb73adc0501314a</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-11 01:14:47</sys_created_on>
+<sys_id>da1a4fb4c31703105eb73adc05013168</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-11 01:14:47</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</application>
+<category>customer</category>
+<comments/>
+<name>sys_app_89b1d8f9c3f24f105eb73adc0501312c</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_app"><sys_app action="INSERT_OR_UPDATE"><active>true</active><can_edit_in_studio>true</can_edit_in_studio><enforce_license>log</enforce_license><guided_setup_guid/><hide_on_ui>false</hide_on_ui><ide_created>FORM</ide_created><installed_as_dependency>false</installed_as_dependency><js_level>es_latest</js_level><licensable>true</licensable><license/><license_category>none</license_category><license_definition/><license_model>none</license_model><logo/><menu display_value="ServiceNow Agentic Developer">13f1903dc3f24f105eb73adc050131d2</menu><name>ServiceNow Agentic Developer</name><package_json/><package_resolver_version>1.0.0</package_resolver_version><private>false</private><restrict_table_access>false</restrict_table_access><runtime_access_tracking/><scope>x_275150_agentic</scope><scoped_administration>false</scoped_administration><short_description/><source>x_275150_agentic</source><store_correlation_id/><store_url/><subscription_entitlement/><sys_class_name>sys_app</sys_class_name><sys_code/><sys_created_by>admin</sys_created_by><sys_created_on>2026-08-19 17:52:56</sys_created_on><sys_id>89b1d8f9c3f24f105eb73adc0501312c</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-08-19 17:52:56</sys_updated_on><template/><trackable>true</trackable><uninstall_blocked>false</uninstall_blocked><user_role display_value="user" name="user">b05926fa0a0a0aa7000130023e0bde98</user_role><vendor/><vendor_prefix/><version>1.0.0</version></sys_app><sys_translated_text action="delete_multiple" query="documentkey=89b1d8f9c3f24f105eb73adc0501312c"/></record_update>]]></payload>
+<payload_hash>2083076147</payload_hash>
+<remote_update_set display_value="ServiceNow Agentic Developer">da1a4fb4c31703105eb73adc05013168</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-11 01:14:47</sys_created_on>
+<sys_id>161a4fb4c31703105eb73adc05013169</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a08e07b8090000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-11 01:14:47</sys_updated_on>
+<table/>
+<target_name>ServiceNow Agentic Developer</target_name>
+<type>Custom Application</type>
+<update_domain>global</update_domain>
+<update_guid>e3f1543d84f24f108f490d94a1c46a06</update_guid>
+<update_guid_history>e3f1543d84f24f108f490d94a1c46a06:2083076147</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</application>
+<category>customer</category>
+<comments/>
+<name>sys_app_application_13f1903dc3f24f105eb73adc050131d2</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_application"><sys_app_application action="INSERT_OR_UPDATE"><active>true</active><category display_value="Custom Applications">e0355b31ef303000a61d5a3615c0fb78</category><description/><device_type>browser</device_type><hint/><name>u_servicenow agentic developer</name><order>100</order><roles>user</roles><sys_class_name>sys_app_application</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-08-19 17:52:55</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>13f1903dc3f24f105eb73adc050131d2</sys_id><sys_mod_count>1</sys_mod_count><sys_name>ServiceNow Agentic Developer</sys_name><sys_overrides/><sys_package display_value="ServiceNow Agentic Developer" source="x_275150_agentic">89b1d8f9c3f24f105eb73adc0501312c</sys_package><sys_policy/><sys_scope display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</sys_scope><sys_update_name>sys_app_application_13f1903dc3f24f105eb73adc050131d2</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-08-19 17:52:57</sys_updated_on><title>ServiceNow Agentic Developer</title><view_name/></sys_app_application></record_update>]]></payload>
+<payload_hash>-1193170289</payload_hash>
+<remote_update_set display_value="ServiceNow Agentic Developer">da1a4fb4c31703105eb73adc05013168</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-11 01:14:47</sys_created_on>
+<sys_id>161a4fb4c31703105eb73adc0501316a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a08e07b82f0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-11 01:14:47</sys_updated_on>
+<table/>
+<target_name>ServiceNow Agentic Developer</target_name>
+<type>Application Menu</type>
+<update_domain>global</update_domain>
+<update_guid>a7f1543dd3f24f10f34c8d3090f56f0d</update_guid>
+<update_guid_history>a7f1543dd3f24f10f34c8d3090f56f0d:-1193170289,13f1143d06f24f108a9e4807c42aa8e2:-18043877</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_9b32107dc3f24f105eb73adc050131af</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-08-19 17:54:25</sys_created_on><sys_id>9b32107dc3f24f105eb73adc050131af</sys_id><sys_mod_count>1</sys_mod_count><sys_name>agentic_developer.x_275150_agentic.admin</sys_name><sys_package display_value="ServiceNow Agentic Developer" source="x_275150_agentic">89b1d8f9c3f24f105eb73adc0501312c</sys_package><sys_policy/><sys_scope display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</sys_scope><sys_security_acl display_value="/api/x_275150_agentic/agentic_developer">6a32dc3dc3f24f105eb73adc050131a1</sys_security_acl><sys_update_name>sys_security_acl_role_9b32107dc3f24f105eb73adc050131af</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-08-19 18:05:55</sys_updated_on><sys_user_role display_value="x_275150_agentic.admin" name="x_275150_agentic.admin">97e4d0f1c3364f105eb73adc05013131</sys_user_role></sys_security_acl_role></record_update>]]></payload>
+<payload_hash>-296493073</payload_hash>
+<remote_update_set display_value="ServiceNow Agentic Developer">da1a4fb4c31703105eb73adc05013168</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-11 01:14:47</sys_created_on>
+<sys_id>161a4fb4c31703105eb73adc050131c2</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a08e07b9e60000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-11 01:14:47</sys_updated_on>
+<table>/api/x_275150_agentic/agentic_developer</table>
+<target_name>agentic_developer.x_275150_agentic.admin</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_guid>adf414f163364f10021cb4d6388b2fe4</update_guid>
+<update_guid_history>adf414f163364f10021cb4d6388b2fe4:1373351143,5d52d07dcaf24f10e54ba3f77e196385:-1215976861</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</application>
+<category>customer</category>
+<comments/>
+<name>sys_ws_operation_31f3d831c3364f105eb73adc0501317c</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ws_operation"&gt;&lt;sys_ws_operation action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;consumes&gt;application/json,application/xml,text/xml&lt;/consumes&gt;&lt;consumes_customized&gt;false&lt;/consumes_customized&gt;&lt;default_operation_uri/&gt;&lt;enforce_acl/&gt;&lt;http_method&gt;POST&lt;/http_method&gt;&lt;name&gt;switchAppScope&lt;/name&gt;&lt;operation_script&gt;&lt;![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+	const appId = request.pathParams.id;
+    new global.AgenticDeveloperGlobalUtil().switchAppScope(appId);
+
+	response.setStatus(200);
+
+})(request, response);]]&gt;&lt;/operation_script&gt;&lt;operation_uri&gt;/api/x_275150_agentic/agentic_developer/apps/switchScope/{id}&lt;/operation_uri&gt;&lt;produces&gt;application/json,application/xml,text/xml&lt;/produces&gt;&lt;produces_customized&gt;false&lt;/produces_customized&gt;&lt;relative_path&gt;/apps/switchScope/{id}&lt;/relative_path&gt;&lt;request_example/&gt;&lt;requires_acl_authorization&gt;true&lt;/requires_acl_authorization&gt;&lt;requires_authentication&gt;true&lt;/requires_authentication&gt;&lt;requires_snc_internal_role&gt;true&lt;/requires_snc_internal_role&gt;&lt;short_description/&gt;&lt;support_trailing_slash&gt;false&lt;/support_trailing_slash&gt;&lt;sys_class_name&gt;sys_ws_operation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-08-19 18:03:52&lt;/sys_created_on&gt;&lt;sys_id&gt;31f3d831c3364f105eb73adc0501317c&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;switchAppScope&lt;/sys_name&gt;&lt;sys_package display_value="ServiceNow Agentic Developer" source="x_275150_agentic"&gt;89b1d8f9c3f24f105eb73adc0501312c&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="ServiceNow Agentic Developer"&gt;89b1d8f9c3f24f105eb73adc0501312c&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ws_operation_31f3d831c3364f105eb73adc0501317c&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-08-19 18:03:52&lt;/sys_updated_on&gt;&lt;web_service_definition display_value="Agentic Developer"&gt;53221c3dc3f24f105eb73adc050131e9&lt;/web_service_definition&gt;&lt;web_service_version/&gt;&lt;/sys_ws_operation&gt;&lt;/record_update&gt;</payload>
+<payload_hash>861313509</payload_hash>
+<remote_update_set display_value="ServiceNow Agentic Developer">da1a4fb4c31703105eb73adc05013168</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-11 01:14:47</sys_created_on>
+<sys_id>1a1a4fb4c31703105eb73adc050131c3</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a08e07b9700000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-11 01:14:47</sys_updated_on>
+<table/>
+<target_name>switchAppScope</target_name>
+<type>Scripted REST Resource</type>
+<update_domain>global</update_domain>
+<update_guid>3b745c7159364f108abd86a090a8f68e</update_guid>
+<update_guid_history>3b745c7159364f108abd86a090a8f68e:861313509</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</application>
+<category>customer</category>
+<comments/>
+<name>sys_user_role_97e4d0f1c3364f105eb73adc05013131</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role"><sys_user_role action="INSERT_OR_UPDATE"><assignable_by/><can_delegate>true</can_delegate><description/><elevated_privilege>false</elevated_privilege><federated_id>P2VUzPZIgBK3dyTEies0HRVsB5KSCIqGsLfNPxM41yI=</federated_id><grantable>true</grantable><includes_roles/><name>x_275150_agentic.admin</name><scoped_admin>false</scoped_admin><suffix>admin</suffix><sys_class_name>sys_user_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-08-19 18:05:49</sys_created_on><sys_id>97e4d0f1c3364f105eb73adc05013131</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_275150_agentic.admin</sys_name><sys_package display_value="ServiceNow Agentic Developer" source="x_275150_agentic">89b1d8f9c3f24f105eb73adc0501312c</sys_package><sys_policy/><sys_scope display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</sys_scope><sys_update_name>sys_user_role_97e4d0f1c3364f105eb73adc05013131</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-08-19 18:05:49</sys_updated_on></sys_user_role></record_update>]]></payload>
+<payload_hash>112773399</payload_hash>
+<remote_update_set display_value="ServiceNow Agentic Developer">da1a4fb4c31703105eb73adc05013168</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-11 01:14:47</sys_created_on>
+<sys_id>5a1a4fb4c31703105eb73adc050131c2</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a08e07b9b50000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-11 01:14:47</sys_updated_on>
+<table/>
+<target_name>x_275150_agentic.admin</target_name>
+<type>Role</type>
+<update_domain>global</update_domain>
+<update_guid>ccf4d0f1e1364f104832604e9acff69b</update_guid>
+<update_guid_history>ccf4d0f1e1364f104832604e9acff69b:-928847475</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</application>
+<category>customer</category>
+<comments/>
+<name>sys_embedded_help_role_8cf4d0f1c3364f105eb73adc05013199</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role"><sys_embedded_help_role action="INSERT_OR_UPDATE"><order>10</order><role display_value="x_275150_agentic.admin" name="x_275150_agentic.admin">97e4d0f1c3364f105eb73adc05013131</role><sys_class_name>sys_embedded_help_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-08-19 18:05:49</sys_created_on><sys_id>8cf4d0f1c3364f105eb73adc05013199</sys_id><sys_mod_count>0</sys_mod_count><sys_name>97e4d0f1c3364f105eb73adc05013131</sys_name><sys_package display_value="ServiceNow Agentic Developer" source="x_275150_agentic">89b1d8f9c3f24f105eb73adc0501312c</sys_package><sys_policy/><sys_scope display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</sys_scope><sys_update_name>sys_embedded_help_role_8cf4d0f1c3364f105eb73adc05013199</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-08-19 18:05:49</sys_updated_on></sys_embedded_help_role></record_update>]]></payload>
+<payload_hash>1266544346</payload_hash>
+<remote_update_set display_value="ServiceNow Agentic Developer">da1a4fb4c31703105eb73adc05013168</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-11 01:14:47</sys_created_on>
+<sys_id>9a1a4fb4c31703105eb73adc050131c1</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a08e07b98f0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-11 01:14:47</sys_updated_on>
+<table/>
+<target_name>97e4d0f1c3364f105eb73adc05013131</target_name>
+<type>Embedded Help Role Priority</type>
+<update_domain>global</update_domain>
+<update_guid/>
+<update_guid_history/>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</application>
+<category>customer</category>
+<comments/>
+<name>sys_ws_definition_53221c3dc3f24f105eb73adc050131e9</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_definition"><sys_ws_definition action="INSERT_OR_UPDATE"><active>true</active><base_uri>/api/x_275150_agentic/agentic_developer</base_uri><consumes>application/json,application/xml,text/xml</consumes><consumes_customized>false</consumes_customized><default_version>No active default version</default_version><doc_link/><enforce_acl>6a32dc3dc3f24f105eb73adc050131a1</enforce_acl><is_versioned>false</is_versioned><name>Agentic Developer</name><namespace>x_275150_agentic</namespace><produces>application/json,application/xml,text/xml</produces><produces_customized>false</produces_customized><service_id>agentic_developer</service_id><short_description/><sys_class_name>sys_ws_definition</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-08-19 17:54:29</sys_created_on><sys_id>53221c3dc3f24f105eb73adc050131e9</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Agentic Developer</sys_name><sys_package display_value="ServiceNow Agentic Developer" source="x_275150_agentic">89b1d8f9c3f24f105eb73adc0501312c</sys_package><sys_policy/><sys_scope display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</sys_scope><sys_update_name>sys_ws_definition_53221c3dc3f24f105eb73adc050131e9</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-08-19 17:54:29</sys_updated_on></sys_ws_definition></record_update>]]></payload>
+<payload_hash>-397919897</payload_hash>
+<remote_update_set display_value="ServiceNow Agentic Developer">da1a4fb4c31703105eb73adc05013168</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-11 01:14:47</sys_created_on>
+<sys_id>9e1a4fb4c31703105eb73adc050131c2</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a08e07b83e0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-11 01:14:47</sys_updated_on>
+<table/>
+<target_name>Agentic Developer</target_name>
+<type>Scripted REST API</type>
+<update_domain>global</update_domain>
+<update_guid>c252d07dd3f24f10d9ad66d6b81a0c96</update_guid>
+<update_guid_history>c252d07dd3f24f10d9ad66d6b81a0c96:-397919897</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</application>
+<category>customer</category>
+<comments/>
+<name>sys_ws_operation_1c62947dc3f24f105eb73adc0501319a</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ws_operation"&gt;&lt;sys_ws_operation action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;consumes&gt;application/json,application/xml,text/xml&lt;/consumes&gt;&lt;consumes_customized&gt;false&lt;/consumes_customized&gt;&lt;default_operation_uri/&gt;&lt;enforce_acl/&gt;&lt;http_method&gt;POST&lt;/http_method&gt;&lt;name&gt;switchUpdateSet&lt;/name&gt;&lt;operation_script&gt;&lt;![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+	const updateSetId = request.pathParams.id;
+	new global.AgenticDeveloperGlobalUtil().switchUpdateSet(updateSetId);
+
+	response.setStatus(200);
+
+})(request, response);]]&gt;&lt;/operation_script&gt;&lt;operation_uri&gt;/api/x_275150_agentic/agentic_developer/update_sets/switch/{id}&lt;/operation_uri&gt;&lt;produces&gt;application/json,application/xml,text/xml&lt;/produces&gt;&lt;produces_customized&gt;false&lt;/produces_customized&gt;&lt;relative_path&gt;/update_sets/switch/{id}&lt;/relative_path&gt;&lt;request_example/&gt;&lt;requires_acl_authorization&gt;true&lt;/requires_acl_authorization&gt;&lt;requires_authentication&gt;true&lt;/requires_authentication&gt;&lt;requires_snc_internal_role&gt;true&lt;/requires_snc_internal_role&gt;&lt;short_description/&gt;&lt;support_trailing_slash&gt;false&lt;/support_trailing_slash&gt;&lt;sys_class_name&gt;sys_ws_operation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-08-19 17:56:20&lt;/sys_created_on&gt;&lt;sys_id&gt;1c62947dc3f24f105eb73adc0501319a&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;switchUpdateSet&lt;/sys_name&gt;&lt;sys_package display_value="ServiceNow Agentic Developer" source="x_275150_agentic"&gt;89b1d8f9c3f24f105eb73adc0501312c&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="ServiceNow Agentic Developer"&gt;89b1d8f9c3f24f105eb73adc0501312c&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ws_operation_1c62947dc3f24f105eb73adc0501319a&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-08-19 18:05:14&lt;/sys_updated_on&gt;&lt;web_service_definition display_value="Agentic Developer"&gt;53221c3dc3f24f105eb73adc050131e9&lt;/web_service_definition&gt;&lt;web_service_version/&gt;&lt;/sys_ws_operation&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-1647114412</payload_hash>
+<remote_update_set display_value="ServiceNow Agentic Developer">da1a4fb4c31703105eb73adc05013168</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-11 01:14:47</sys_created_on>
+<sys_id>d21a4fb4c31703105eb73adc050131c3</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a08e07b9820000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-11 01:14:47</sys_updated_on>
+<table/>
+<target_name>switchUpdateSet</target_name>
+<type>Scripted REST Resource</type>
+<update_domain>global</update_domain>
+<update_guid>7fc458b15a364f1008f87314561ad59b</update_guid>
+<update_guid_history>7fc458b15a364f1008f87314561ad59b:-1647114412,59a4d471e4364f10a3c9699a8098f3cd:-1221345286,95c2d0bd50f24f10c6bb5220336b8305:-538869166</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_6a32dc3dc3f24f105eb73adc050131a1</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><advanced>false</advanced><applies_to/><condition/><controlled_by_refs/><decision_type>allow</decision_type><description/><local_or_existing>Existing</local_or_existing><name>/api/x_275150_agentic/agentic_developer</name><operation display_value="execute">execute</operation><script/><security_attribute/><sys_class_name>sys_security_acl</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-08-19 17:54:25</sys_created_on><sys_id>6a32dc3dc3f24f105eb73adc050131a1</sys_id><sys_mod_count>1</sys_mod_count><sys_name>/api/x_275150_agentic/agentic_developer</sys_name><sys_package display_value="ServiceNow Agentic Developer" source="x_275150_agentic">89b1d8f9c3f24f105eb73adc0501312c</sys_package><sys_policy/><sys_scope display_value="ServiceNow Agentic Developer">89b1d8f9c3f24f105eb73adc0501312c</sys_scope><sys_update_name>sys_security_acl_6a32dc3dc3f24f105eb73adc050131a1</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-08-19 18:05:55</sys_updated_on><type display_value="REST_Endpoint">REST_Endpoint</type></sys_security_acl></record_update>]]></payload>
+<payload_hash>15384571</payload_hash>
+<remote_update_set display_value="ServiceNow Agentic Developer">da1a4fb4c31703105eb73adc05013168</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-11 01:14:47</sys_created_on>
+<sys_id>de1a4fb4c31703105eb73adc050131c1</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a08e07b9cc0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-11 01:14:47</sys_updated_on>
+<table>/api/x_275150_agentic/agentic_developer</table>
+<target_name>/api/x_275150_agentic/agentic_developer</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_guid>29f454f1f3364f10f6f8d69cc4bfe407</update_guid>
+<update_guid_history>29f454f1f3364f10f6f8d69cc4bfe407:15384571,5152d07d10f24f108ef0a14f6e7d0a8c:1388751931</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>

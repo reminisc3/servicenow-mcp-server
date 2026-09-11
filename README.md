@@ -1,163 +1,180 @@
 # ServiceNow MCP Server
 
-> A lightweight MCP (Model Context Protocol) adapter that exposes a set of ServiceNow helper tools via a FastMCP server. Designed for developer automation, scripting, and rapid metadata creation against a ServiceNow instance.
+A FastMCP server that exposes ServiceNow Table API operations and developer automation tools through the Model Context Protocol (MCP). It supports CRUD operations, scoped application and update-set workflows, schema creation, Service Portal discovery, and common metadata creation.
 
 ## Features
 
-- Exposes common ServiceNow REST operations as MCP tools (CRUD on tables).
-- Helpers for managing scoped applications and update sets.
-- Convenience functions for creating widgets, reports, client scripts, and script includes.
-- Context-aware requests that respect the current application scope and active update set.
-
-## Repository Layout
-
-- `src/server.py` — Main FastMCP server implementation and tool registrations.
-- `src/utils/` — Utilities and helpers (if present).
-- `requirements.txt` — Python dependencies.
+- ServiceNow Table API CRUD operations for arbitrary tables.
+- Scoped application and local update-set management.
+- Application-scope and update-set context tracking during a server session.
+- Table and column creation, including access and reference-field options.
+- Creation of reports, Service Portal widgets, Script Includes, Client Scripts, and UI Policies.
+- URL discovery for Service Portal pages, widgets, UI pages, tables, and columns.
+- Basic Authentication and OAuth 2.0, including access-token, password, refresh-token, and client-credentials flows.
 
 ## Requirements
 
-- Python 3.10+ recommended
-- See `requirements.txt` for exact dependencies (e.g., `requests`, `python-dotenv`, `mcp` / `mcp-server`)
+- Python 3.10 or newer.
+- A ServiceNow instance with an account that can use the Table API.
+- An MCP client that can connect to a streamable HTTP server.
 
-## Environment
+## Repository Layout
 
-The server uses environment variables for ServiceNow credentials and instance configuration. Create a `.env` file or export these variables in your shell:
-
+```text
+src/server.py                                MCP server and tool registrations
+tests/test_server_auth.py                    Authentication and request-wrapper tests
+update_sets/ServiceNow Agentic Developer-v1.0.xml
+                                             ServiceNow application update set
+requirements.txt                             Python dependencies
 ```
-SN_INSTANCE=your_instance_name_without_domain_prefix
+
+## Configuration
+
+The server loads `.env` from the repository root. Exported environment variables take precedence over values in that file.
+
+### Basic Authentication
+
+```dotenv
+SN_INSTANCE=dev12345
 SN_USERNAME=your_user
 SN_PASSWORD=your_password_or_token
 SN_AUTH_MODE=basic
 SN_SCOPE_PREFIX=x_123456
 ```
 
-`SN_INSTANCE` may be either the short instance name (for example `dev12345`) or the full instance URL (`https://dev12345.service-now.com`). The server normalizes both forms.
+`SN_INSTANCE` can be a short instance name such as `dev12345` or a full URL such as `https://dev12345.service-now.com`.
 
-When creating a scoped application, `SN_SCOPE_PREFIX` is prepended to the requested scope name (for example, `x_123456` plus `order_management` becomes `x_123456_order_management`). If `SN_SCOPE_PREFIX` is not set, the server reads the value from the `glide.appcreator.company.code` property in the `sys_properties` table.
+`SN_SCOPE_PREFIX` is used when creating scoped applications. For example, `x_123456` and `order_management` produce the scope `x_123456_order_management`. If it is omitted, the server reads `glide.appcreator.company.code` from `sys_properties`.
 
-If a tool call returns `401 Unauthorized`, verify that `SN_USERNAME` and `SN_PASSWORD` are valid ServiceNow credentials and that the account can use the Table API. The MCP client must also load the same `.env` file shown below; a shell environment and a VS Code MCP process can have different environment variables.
+### OAuth 2.0
 
-OAuth 2.0 is also supported by setting `SN_AUTH_MODE=oauth`. You can provide a pre-issued `SN_OAUTH_ACCESS_TOKEN`, or configure `SN_OAUTH_CLIENT_ID` and `SN_OAUTH_CLIENT_SECRET` to acquire a token from ServiceNow's `/oauth_token.do` endpoint. Set `SN_OAUTH_GRANT_TYPE=client_credentials` for client credentials flow; this does not require `SN_USERNAME` or `SN_PASSWORD`. The existing `password` and `refresh_token` grants remain supported. Set `SN_OAUTH_SCOPE=useraccount` (or another scope granted to the OAuth application) to include an OAuth scope in the token request. `SN_OAUTH_TOKEN_URL` is only needed for a non-default token endpoint.
+Set `SN_AUTH_MODE=oauth` and use either a pre-issued access token or OAuth client credentials:
+
+```dotenv
+SN_INSTANCE=dev12345
+SN_AUTH_MODE=oauth
+SN_OAUTH_ACCESS_TOKEN=your_access_token
+```
+
+For token acquisition, use:
+
+```dotenv
+SN_OAUTH_CLIENT_ID=your_client_id
+SN_OAUTH_CLIENT_SECRET=your_client_secret
+SN_OAUTH_GRANT_TYPE=client_credentials
+SN_OAUTH_SCOPE=useraccount
+```
+
+Supported grant types are `client_credentials`, `password`, and `refresh_token`. The password grant also requires `SN_USERNAME` and `SN_PASSWORD`; the refresh-token grant requires `SN_OAUTH_REFRESH_TOKEN`. `SN_OAUTH_TOKEN_URL` can override the default `<instance>/oauth_token.do` endpoint.
+
+Keep credentials in `.env` or another secret store and do not commit them to source control.
 
 ## Quick Start
 
-1. Install dependencies:
+1. Clone the repository and enter its directory.
 
-```bash
-python -m pip install -r requirements.txt
+2. Create and activate a virtual environment:
+
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+
+   On Windows, activate the environment with `.venv\\Scripts\\activate`.
+
+3. Install the dependencies:
+
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
+
+4. Configure the ServiceNow instance and authentication variables in `.env` as described above.
+
+5. Import the update set from [`update_sets/ServiceNow Agentic Developer-v1.0.xml`](update_sets/ServiceNow%20Agentic%20Developer-v1.0.xml) into the ServiceNow instance. In ServiceNow, load the remote update set, preview it, resolve any collisions, and commit it. This installs the `ServiceNow Agentic Developer` application and the custom endpoints used by the context-switching tools.
+
+6. Start the server:
+
+   ```bash
+   python src/server.py
+   ```
+
+   The server listens on `http://127.0.0.1:9000/mcp` using FastMCP's streamable HTTP transport.
+
+7. Configure an MCP client to connect to that URL and invoke the registered tools.
+
+## MCP Client Configuration
+
+The server uses streamable HTTP by default. A client configuration typically points to:
+
+```text
+http://127.0.0.1:9000/mcp
 ```
 
-2. Add your environment variables (see above).
+The server binds to localhost. To expose it on another interface, update the `host` argument in the `mcp.run(...)` call in `src/server.py` and apply the appropriate network security controls.
 
-3. Run the MCP server:
+## Available Tools
 
-```bash
-python src/server.py
-```
+### Context and application management
 
-The server runs a FastMCP instance that communicates over STDIO by default. Use an MCP-capable client to call tools.
+- `create_scoped_app(name, scope_id)` - Create a scoped application and switch to it.
+- `create_update_set(name, description)` - Create a local update set and switch to it.
+- `switch_app_context(application_sys_id)` - Set the active application scope.
+- `switch_update_set(update_set_sys_id)` - Set the active update set.
 
-## Using with VS Code
+### Schema and discovery
 
-You can integrate the MCP server workflow into VS Code for a comfortable development experience. Two common approaches:
+- `create_table(...)` - Create a custom table in `sys_db_object`.
+- `create_column(...)` - Create a field definition in `sys_dictionary`.
+- `get_table_columns(table_name)` - Retrieve field definitions for a table.
+- `discover_url(url)` - Find related Service Portal, UI, table, widget, and column records.
 
-1. Use an MCP-capable extension or client in the editor that supports STDIO transports (or TCP if you adapt `mcp.run`). Configure the extension to launch `python src/server.py` as the background MCP server process and bind its STDIO to the extension.
+### Records
 
-2. Use the built-in `Run`/`Debug` configuration to start the server and then interact with it from an external MCP client. Example `launch.json` snippet:
+- `create_record(table_name, fields)`
+- `get_record(table_name, sys_id)`
+- `get_records(table_name, query, limit)`
+- `update_record(table_name, sys_id, fields)`
+- `delete_record(table_name, sys_id)`
 
-```json
-{
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"name": "Run MCP Server",
-			"type": "python",
-			"request": "launch",
-			"program": "${workspaceFolder}/src/server.py",
-			"console": "integratedTerminal",
-			"envFile": "${workspaceFolder}/.env"
-		}
-	]
-}
-```
+### Metadata creation
 
-Tips:
+- `create_report(title, table, type, field)`
+- `create_widget(name, id, html, css, client_script, server_script)`
+- `create_script_include(name, script, api_name, client_callable)`
+- `create_client_script(name, table, type, script, ui_type)`
+- `create_ui_policy(short_description, table, conditions, reverse_if_false)`
 
-- Open an integrated terminal in VS Code to monitor server logs and output.
-- Use the `Python` extension to ensure the correct interpreter and virtual environment are active.
-- If you use an MCP client extension that supports TCP, modify `mcp.run(transport="tcp", host="127.0.0.1", port=12345)` and update the client to connect to that port.
+## Context Behavior
 
-## Using with Postman, curl, or Node
+Application and update-set context is stored in memory for the lifetime of the server process. The default application context is `global`, and no update set is active until one is created or selected.
 
-This project exposes ServiceNow REST calls through MCP tools rather than exposing HTTP directly. To test ServiceNow APIs without an MCP client, you can either call the ServiceNow REST endpoints directly with `curl`/Postman using the same credentials, or wrap MCP tool calls with a small client. Examples below assume you prefer direct REST testing.
+When an update set is active, the server sends its sys_id in the `X-UserToken-UpdateSet` request header and includes it in supported metadata payloads. Restarting the server resets this in-memory context, so select the application and update set again for each new session.
 
-curl example (get a record):
+## Development and Testing
 
-```bash
-curl -u "$SN_USERNAME:$SN_PASSWORD" \
-	"https://$SN_INSTANCE.service-now.com/api/now/table/incident?sysparm_limit=1" \
-	-H "Accept: application/json"
-```
-
-Node (axios) example:
-
-```js
-const axios = require('axios');
-
-const instance = process.env.SN_INSTANCE;
-const auth = { username: process.env.SN_USERNAME, password: process.env.SN_PASSWORD };
-
-axios.get(`https://${instance}.service-now.com/api/now/table/incident?sysparm_limit=1`, { auth })
-	.then(res => console.log(res.data))
-	.catch(err => console.error(err.response ? err.response.data : err.message));
-```
-
-If you want to call the MCP tools from Node or another language, implement an MCP client that communicates over STDIO or TCP and invokes the registered tool names (for example `create_record`, `get_record`).
-
-## Example Tool Usage
-
-Below are example MCP tool names and brief descriptions — these map to functions registered in `src/server.py`:
-
-- `create_record(table_name, fields)` — Create a record in a table.
-- `get_record(table_name, sys_id)` — Retrieve a single record by `sys_id`.
-- `get_records(table_name, query, limit)` — Query records with an encoded query string.
-- `update_record(table_name, sys_id, fields)` — Update a record by `sys_id`.
-- `delete_record(table_name, sys_id)` — Delete a record by `sys_id`.
-- `create_table(label, name, extends_table)` — Create a custom table in `sys_db_object`.
-- `create_column(table_name, element, column_label, internal_type)` — Create a column in `sys_dictionary`.
-- `create_update_set(name, description)` — Create an update set in the current application scope.
-- `switch_update_set(update_set_sys_id)` — Switch the active update set for subsequent metadata operations.
-- `create_script_include(name, script, api_name, client_callable)` — Create a server-side Script Include.
-
-Example: using an MCP client call to create a record might look like calling the `create_record` tool with `table_name` set to `incident` and `fields` containing JSON for required fields.
-
-## Context & Behavior Notes
-
-- The server keeps an in-memory `CURRENT_CONTEXT` for `application_sys_id` and `update_set_sys_id`. Call `switch_app_context()` and `switch_update_set()` to change behavior for subsequent creations.
-- When an update set is active, some creation helpers include the `update_set` field so ServiceNow will associate metadata with that update set.
-
-## Development
-
-- Implement or extend tools in `src/server.py`. Keep tool functions small and focused.
-- Add new helper functions under `src/utils/` as needed.
-- Follow ServiceNow REST API best practices: prefer `sysparm_fields` and `sysparm_query` when retrieving lists.
-
-## Testing
-
-Run the authentication and request-wrapper unit tests with:
+Run the unit tests from the repository root:
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-These tests mock ServiceNow responses, so they do not require live credentials or network access. For live connectivity testing, run the server and exercise tools with an MCP client using the configured credentials.
+The tests mock ServiceNow and do not require live credentials or network access. Keep tool implementations in `src/server.py` focused, and add tests for changes to authentication, request construction, or context behavior.
 
-## Contributing
+For direct ServiceNow API checks, use the same credentials with `curl`:
 
-Contributions are welcome. Open issues or PRs for bug fixes and feature requests. Please include reproducible examples when reporting bugs.
+```bash
+curl --user "$SN_USERNAME:$SN_PASSWORD" \
+  "https://$SN_INSTANCE.service-now.com/api/now/table/incident?sysparm_limit=1" \
+  --header "Accept: application/json"
+```
+
+## Troubleshooting
+
+- `401 Unauthorized`: verify the credentials, authentication mode, OAuth token, and Table API permissions. Ensure the MCP process loads the same `.env` file as the shell.
+- Context-switching failures: confirm that the `ServiceNow Agentic Developer` update set was imported, previewed, and committed.
+- OAuth failures: verify the grant type, client permissions, token endpoint, and required credentials for that grant.
+- Connection failures: confirm that the server is running and that the MCP client uses `http://127.0.0.1:9000/mcp`.
 
 ## License
 
-See the repository `LICENSE` file for licensing details.
-
+See [`LICENSE`](LICENSE).
