@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2026-09-11 17:57:26">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description/>
+<inserted/>
+<name>Agentic Developer Global Utils</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>c3d2d4bdc3f24f105eb73adc05013167</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-11 17:57:25</sys_created_on>
+<sys_id>999f2e89c31383105eb73adc05013146</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-11 17:57:25</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_50f298bdc3f24f105eb73adc050131af</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.AgenticDeveloperGlobalUtil&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;description/&gt;&lt;mobile_callable&gt;false&lt;/mobile_callable&gt;&lt;name&gt;AgenticDeveloperGlobalUtil&lt;/name&gt;&lt;sandbox_callable&gt;false&lt;/sandbox_callable&gt;&lt;script&gt;&lt;![CDATA[var AgenticDeveloperGlobalUtil = Class.create();
+AgenticDeveloperGlobalUtil.prototype = {
+    initialize: function() {},
+
+    switchUpdateSet: function(updateSetId) {
+        return new GlideUpdateSet().set(updateSetId);
+    },
+
+    switchAppScope: function(appId) {
+		gs.getUser().setPreference('apps.current_app', appId);
+    },
+
+    type: 'AgenticDeveloperGlobalUtil'
+};]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-08-19 17:57:47&lt;/sys_created_on&gt;&lt;sys_id&gt;50f298bdc3f24f105eb73adc050131af&lt;/sys_id&gt;&lt;sys_mod_count&gt;5&lt;/sys_mod_count&gt;&lt;sys_name&gt;AgenticDeveloperGlobalUtil&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_50f298bdc3f24f105eb73adc050131af&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-11 17:57:05&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;50f298bdc3f24f105eb73adc050131af&lt;/id&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-08-19 17:57:47&lt;/sys_created_on&gt;&lt;sys_id&gt;e21398bdc3f24f105eb73adc050131f5&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-08-19 17:57:47&lt;/sys_updated_on&gt;&lt;table&gt;sys_script_include&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+<payload_hash>2062487410</payload_hash>
+<remote_update_set display_value="Agentic Developer Global Utils">999f2e89c31383105eb73adc05013146</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-11 17:57:25</sys_created_on>
+<sys_id>dd9f2e89c31383105eb73adc05013146</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0919daefe0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-11 17:57:25</sys_updated_on>
+<table/>
+<target_name>AgenticDeveloperGlobalUtil</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_guid>d08f26499013831052ad6c4e04eff969</update_guid>
+<update_guid_history>d08f26499013831052ad6c4e04eff969:2062487410,564a14bd1b364f10de1c507123e8da7c:569189937,2bd9147dab364f10f47f476adebe5efa:-2050866208,6669943d4e364f10fd9c6dd2b89fef95:532081001,cbb398bd6cf24f106849c02322161be7:-890031475,6a13dcbdd0f24f105d5064a29974a480:-1204688331</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>
