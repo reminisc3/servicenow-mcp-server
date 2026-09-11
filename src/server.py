@@ -14,6 +14,7 @@ load_dotenv(dotenv_path=Path(__file__).resolve().parent.parent / ".env")
 
 # Initialize FastMCP Server
 mcp = FastMCP("ServiceNow Developer Server")
+TOOL_NAME_PREFIX = "snmcp_"
 
 # Configuration helpers
 INSTANCE = os.getenv("SN_INSTANCE", "").strip()
@@ -201,7 +202,7 @@ def _get_scope_prefix() -> str:
         return str(result[0].get("value", "")).strip()
     return ""
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}create_scoped_app")
 def create_scoped_app(name: str, scope_id: str) -> Dict[str, Any]:
     """
     Creates a new Scoped Application in ServiceNow.
@@ -225,7 +226,7 @@ def create_scoped_app(name: str, scope_id: str) -> Dict[str, Any]:
         switch_app_context(sys_id)
     return response
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}create_update_set")
 def create_update_set(name: str, description: str = "") -> Dict[str, Any]:
     """
     Creates a new Local Update Set in the current application scope.
@@ -243,7 +244,7 @@ def create_update_set(name: str, description: str = "") -> Dict[str, Any]:
         switch_update_set(sys_id)
     return response
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}switch_update_set")
 def switch_update_set(update_set_sys_id: str) -> str:
     """
     Switches the active update set context for subsequent metadata creations.
@@ -255,7 +256,7 @@ def switch_update_set(update_set_sys_id: str) -> str:
     CURRENT_CONTEXT["update_set_sys_id"] = update_set_sys_id
     return f"Context switched successfully to Update Set Sys ID: {update_set_sys_id}"
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}switch_app_context")
 def switch_app_context(application_sys_id: str) -> str:
     """
     Switches the active application scope context (e.g., 'global' or a Scoped App sys_id).
@@ -270,7 +271,7 @@ def switch_app_context(application_sys_id: str) -> str:
 
 # --- Schema & Table Tools ---
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}create_table")
 def create_table(
     label: str,
     name: str,
@@ -310,7 +311,7 @@ def create_table(
     return _sn_request("POST", path, payload)
 
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}create_column")
 def create_column(
     table_name: str,
     element: str,
@@ -352,7 +353,7 @@ def create_column(
         payload["update_set"] = CURRENT_CONTEXT["update_set_sys_id"]
     return _sn_request("POST", path, payload)
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}get_table_columns")
 def get_table_columns(table_name: str) -> Dict[str, Any]:
     """
     Retrieves column definitions and schema data for a specific table.
@@ -437,7 +438,7 @@ def _extract_table_from_parsed(parsed: Dict[str, Any]) -> Optional[str]:
     return None
 
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}discover_url")
 def discover_url(url: str) -> Dict[str, Any]:
     """
     Discover ServiceNow artifacts related to a given URL.
@@ -505,7 +506,7 @@ def discover_url(url: str) -> Dict[str, Any]:
 
 # --- Standard CRUD Tools ---
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}get_record")
 def get_record(table_name: str, sys_id: str) -> Dict[str, Any]:
     """
     Retrieves a single record from a specified table by its sys_id.
@@ -513,7 +514,7 @@ def get_record(table_name: str, sys_id: str) -> Dict[str, Any]:
     path = f"/api/now/table/{table_name}/{sys_id}"
     return _sn_request("GET", path)
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}get_records")
 def get_records(table_name: str, query: str = "", limit: int = 10) -> Dict[str, Any]:
     """
     Retrieves multiple records from a table based on an encoded query string.
@@ -522,7 +523,7 @@ def get_records(table_name: str, query: str = "", limit: int = 10) -> Dict[str, 
     params = {"sysparm_query": query, "sysparm_limit": limit}
     return _sn_request("GET", path, params=params)
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}create_record")
 def create_record(table_name: str, fields: Dict[str, Any]) -> Dict[str, Any]:
     """
     Inserts a new record into a specified table.
@@ -530,7 +531,7 @@ def create_record(table_name: str, fields: Dict[str, Any]) -> Dict[str, Any]:
     path = f"/api/now/table/{table_name}"
     return _sn_request("POST", path, payload=fields)
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}update_record")
 def update_record(table_name: str, sys_id: str, fields: Dict[str, Any]) -> Dict[str, Any]:
     """
     Updates fields on an existing record using its sys_id.
@@ -538,7 +539,7 @@ def update_record(table_name: str, sys_id: str, fields: Dict[str, Any]) -> Dict[
     path = f"/api/now/table/{table_name}/{sys_id}"
     return _sn_request("PUT", path, payload=fields)
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}delete_record")
 def delete_record(table_name: str, sys_id: str) -> Dict[str, Any]:
     """
     Deletes a record from a specified table by its sys_id.
@@ -549,7 +550,7 @@ def delete_record(table_name: str, sys_id: str) -> Dict[str, Any]:
 
 # --- Specialized Metadata / Creation Tools ---
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}create_report")
 def create_report(title: str, table: str, type: str = "bar", field: str = "") -> Dict[str, Any]:
     """
     Creates a basic ServiceNow report configuration.
@@ -564,7 +565,7 @@ def create_report(title: str, table: str, type: str = "bar", field: str = "") ->
     }
     return _sn_request("POST", path, payload)
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}create_widget")
 def create_widget(name: str, id: str, html: str = "", css: str = "", client_script: str = "", server_script: str = "") -> Dict[str, Any]:
     """
     Creates a Service Portal Widget.
@@ -581,7 +582,7 @@ def create_widget(name: str, id: str, html: str = "", css: str = "", client_scri
     }
     return _sn_request("POST", path, payload)
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}create_script_include")
 def create_script_include(name: str, script: str, api_name: Optional[str] = None, client_callable: bool = False) -> Dict[str, Any]:
     """
     Creates a Server-Side Script Include.
@@ -599,7 +600,7 @@ def create_script_include(name: str, script: str, api_name: Optional[str] = None
         
     return _sn_request("POST", path, payload)
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}create_client_script")
 def create_client_script(name: str, table: str, type: str, script: str, ui_type: str = "1") -> Dict[str, Any]:
     """
     Creates a Client Script. Type options: onLoad, onChange, onSubmit, onCellEdit. UI Type: 0=Desktop, 1=Mobile/Service Portal, 10=All.
@@ -616,7 +617,7 @@ def create_client_script(name: str, table: str, type: str, script: str, ui_type:
     }
     return _sn_request("POST", path, payload)
 
-@mcp.tool()
+@mcp.tool(name=f"{TOOL_NAME_PREFIX}create_ui_policy")
 def create_ui_policy(short_description: str, table: str, conditions: str = "", reverse_if_false: bool = True) -> Dict[str, Any]:
     """
     Creates a UI Policy. Conditions should be passed as a standard ServiceNow encoded query string.

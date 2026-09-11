@@ -1,3 +1,4 @@
+import asyncio
 import unittest
 import os
 from unittest.mock import call, patch
@@ -24,6 +25,17 @@ class FakeTokenResponse:
 
 
 class ServerAuthenticationTests(unittest.TestCase):
+    def test_all_mcp_tools_use_the_server_prefix(self):
+        tools = asyncio.run(server.mcp.list_tools())
+        tool_names = {tool.name for tool in tools}
+
+        self.assertEqual(len(tool_names), 18)
+        self.assertTrue(
+            all(name.startswith(server.TOOL_NAME_PREFIX) for name in tool_names)
+        )
+        self.assertIn("snmcp_create_record", tool_names)
+        self.assertNotIn("create_record", tool_names)
+
     def test_server_port_uses_environment_value(self):
         with patch.dict(os.environ, {"MCP_PORT": "9100"}):
             self.assertEqual(server._get_server_port(), 9100)

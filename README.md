@@ -113,39 +113,43 @@ The server uses streamable HTTP by default. A client configuration typically poi
 http://127.0.0.1:9000/mcp
 ```
 
+All MCP tool names use the `snmcp_` prefix to avoid collisions when this server is
+connected alongside other MCP servers. For example, the record lookup tool is
+advertised as `snmcp_get_record`.
+
 The server binds to localhost. To expose it on another interface, update the `host` argument in the `mcp.run(...)` call in `src/server.py` and apply the appropriate network security controls.
 
 ## Available Tools
 
 ### Context and application management
 
-- `create_scoped_app(name, scope_id)` - Create a scoped application and switch to it.
-- `create_update_set(name, description)` - Create a local update set and switch to it.
-- `switch_app_context(application_sys_id)` - Set the active application scope.
-- `switch_update_set(update_set_sys_id)` - Set the active update set.
+- `snmcp_create_scoped_app(name, scope_id)` - Create a scoped application and switch to it.
+- `snmcp_create_update_set(name, description)` - Create a local update set and switch to it.
+- `snmcp_switch_app_context(application_sys_id)` - Set the active application scope.
+- `snmcp_switch_update_set(update_set_sys_id)` - Set the active update set.
 
 ### Schema and discovery
 
-- `create_table(...)` - Create a custom table in `sys_db_object`.
-- `create_column(...)` - Create a field definition in `sys_dictionary`.
-- `get_table_columns(table_name)` - Retrieve field definitions for a table.
-- `discover_url(url)` - Find related Service Portal, UI, table, widget, and column records.
+- `snmcp_create_table(...)` - Create a custom table in `sys_db_object`.
+- `snmcp_create_column(...)` - Create a field definition in `sys_dictionary`.
+- `snmcp_get_table_columns(table_name)` - Retrieve field definitions for a table.
+- `snmcp_discover_url(url)` - Find related Service Portal, UI, table, widget, and column records.
 
 ### Records
 
-- `create_record(table_name, fields)`
-- `get_record(table_name, sys_id)`
-- `get_records(table_name, query, limit)`
-- `update_record(table_name, sys_id, fields)`
-- `delete_record(table_name, sys_id)`
+- `snmcp_create_record(table_name, fields)`
+- `snmcp_get_record(table_name, sys_id)`
+- `snmcp_get_records(table_name, query, limit)`
+- `snmcp_update_record(table_name, sys_id, fields)`
+- `snmcp_delete_record(table_name, sys_id)`
 
 ### Metadata creation
 
-- `create_report(title, table, type, field)`
-- `create_widget(name, id, html, css, client_script, server_script)`
-- `create_script_include(name, script, api_name, client_callable)`
-- `create_client_script(name, table, type, script, ui_type)`
-- `create_ui_policy(short_description, table, conditions, reverse_if_false)`
+- `snmcp_create_report(title, table, type, field)`
+- `snmcp_create_widget(name, id, html, css, client_script, server_script)`
+- `snmcp_create_script_include(name, script, api_name, client_callable)`
+- `snmcp_create_client_script(name, table, type, script, ui_type)`
+- `snmcp_create_ui_policy(short_description, table, conditions, reverse_if_false)`
 
 ## Context Behavior
 
