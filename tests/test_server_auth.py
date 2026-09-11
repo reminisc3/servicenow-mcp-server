@@ -1,4 +1,5 @@
 import unittest
+import os
 from unittest.mock import call, patch
 
 from src import server
@@ -23,6 +24,15 @@ class FakeTokenResponse:
 
 
 class ServerAuthenticationTests(unittest.TestCase):
+    def test_server_port_uses_environment_value(self):
+        with patch.dict(os.environ, {"MCP_PORT": "9100"}):
+            self.assertEqual(server._get_server_port(), 9100)
+
+    def test_server_port_rejects_invalid_value(self):
+        with patch.dict(os.environ, {"MCP_PORT": "not-a-port"}):
+            with self.assertRaisesRegex(RuntimeError, "MCP_PORT"):
+                server._get_server_port()
+
     def setUp(self):
         self.original_auth_mode = server.AUTH_MODE
         self.original_username = server.USERNAME

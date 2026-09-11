@@ -29,6 +29,20 @@ OAUTH_SCOPE = os.getenv("SN_OAUTH_SCOPE", "").strip()
 SCOPE_PREFIX = os.getenv("SN_SCOPE_PREFIX", "").strip()
 _oauth_token: Optional[str] = None
 _oauth_token_expires_at = 0.0
+
+
+def _get_server_port() -> int:
+    """Return the configured MCP server port."""
+    value = os.getenv("MCP_PORT", "9000").strip()
+    try:
+        port = int(value)
+    except ValueError as exc:
+        raise RuntimeError("MCP_PORT must be an integer between 1 and 65535") from exc
+    if not 1 <= port <= 65535:
+        raise RuntimeError("MCP_PORT must be an integer between 1 and 65535")
+    return port
+
+
 if INSTANCE.startswith(("http://", "https://")):
     BASE_URL = INSTANCE.rstrip("/")
 else:
@@ -621,4 +635,4 @@ def create_ui_policy(short_description: str, table: str, conditions: str = "", r
 
 if __name__ == "__main__":
     # Launching the FastMCP server via STDIO transport layer
-    mcp.run(transport="streamable-http", host="127.0.0.1", port=9000)
+    mcp.run(transport="streamable-http", host="127.0.0.1", port=_get_server_port())

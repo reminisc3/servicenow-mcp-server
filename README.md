@@ -40,11 +40,14 @@ SN_USERNAME=your_user
 SN_PASSWORD=your_password_or_token
 SN_AUTH_MODE=basic
 SN_SCOPE_PREFIX=x_123456
+MCP_PORT=9000
 ```
 
 `SN_INSTANCE` can be a short instance name such as `dev12345` or a full URL such as `https://dev12345.service-now.com`.
 
 `SN_SCOPE_PREFIX` is used when creating scoped applications. For example, `x_123456` and `order_management` produce the scope `x_123456_order_management`. If it is omitted, the server reads `glide.appcreator.company.code` from `sys_properties`.
+
+`MCP_PORT` controls the local streamable HTTP listener port and defaults to `9000`.
 
 ### OAuth 2.0
 
